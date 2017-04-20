@@ -1,18 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : 09/03/2017, 09:27:53
-    Author     : 41514181
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Only Tracker App</title>
-    </head>
-    <body>
+<%@include file="WEB-INF/jspf/header.jspf" %>
         <form action="FrontController" method="post">
             <h2>Cadastro</h2>
             <p><input type="text" name="nome" placeholder="Nome" required /></p>
@@ -32,10 +18,4 @@
             <input type="hidden" name="ctrl" value="Login" />
             <p><button type="submit">Enviar</button></p>
         </form>
-        
-        <c:if test="${user != null}">
-            <h2>Olá, ${user.name}</h2>
-            <p>Gostaria de <a href="/OnlyTracker/update.jsp">Atualizar Cadastro</a> ou <a href="/OnlyTracker/FrontController?ctrl=Logout">Sair</a>?</p>
-        </c:if>
-    </body>
-</html>
+<%@include file="WEB-INF/jspf/footer.jspf" %>

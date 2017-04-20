@@ -1,17 +1,4 @@
-<%-- 
-    Document   : update
-    Created on : 21/03/2017, 14:38:40
-    Author     : 41514181
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<%@include file="WEB-INF/jspf/header.jspf" %>
         <form action="FrontController" method="POST">
             <h2>Atualizar</h2>
             <p><input type="text" name="nome" placeholder="Nome" value="${user.name}"/></p>
@@ -22,6 +9,6 @@
             <p><input id="birthday" type="date" name="birthday" value="${user.birthdayToString()}" required /></p>
             <input type="hidden" name="ctrl" value="Atualizar" />
             <p><button type="submit">Enviar</button></p>
+            <p><a href="/OnlyTrackerApp/index.jsp">Voltar</a></p>
         </form>
-    </body>
-</html>
+<%@include file="WEB-INF/jspf/footer.jspf" %>
