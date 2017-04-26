@@ -37,7 +37,7 @@ public class LoginController extends AbstractController{
                 this.setReturnPage("index.jsp");
             }
             else{
-                this.getRequest().getSession().setAttribute("error", "Senha incorreta");
+                this.getRequest().getSession().setAttribute("error", "Email ou senha incorreta.");
                 this.setReturnPage("error.jsp");
             }
         }
