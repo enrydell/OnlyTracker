@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class UserLP3 implements Serializable {
     private String name, email, password;
+    @Transient
     private List<Movie> movies;
     @Temporal (TemporalType.TIMESTAMP)
     private Date birthday;

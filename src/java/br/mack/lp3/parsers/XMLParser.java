@@ -60,9 +60,9 @@ public class XMLParser {
             URL url = new URL(uri);
             
             //Conexão HTTP
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
-            //HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
+            //HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             
             int code = conn.getResponseCode();
             
