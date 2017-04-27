@@ -14,8 +14,8 @@
 <c:if test="${movie != null}" >
     <h1>${movie.title}</h1>
     <img src="${movie.poster}" alt="" />
-    <span>${movie.released}</span>
-    <span>${movie.year}</span>
+    <span>Lançamento: ${movie.released}</span>
+    <span>Classificação indicativa: ${movie.rated}</span>
 </c:if>
     
 <%@include file="WEB-INF/jspf/footer.jspf" %>

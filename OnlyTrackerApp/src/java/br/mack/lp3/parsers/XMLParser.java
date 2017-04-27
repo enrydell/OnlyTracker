@@ -60,9 +60,9 @@ public class XMLParser {
             URL url = new URL(uri);
             
             //Conexão HTTP
-            //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
-            //HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
+            //HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             
             int code = conn.getResponseCode();
             
@@ -107,14 +107,15 @@ public class XMLParser {
         
         if(element.getElementsByTagName("movie").item(0) != null) {
             Element movie = (Element) element.getElementsByTagName("movie").item(0);
-            System.out.println(movie);
+            String id = movie.getAttribute("imdbID");
             String title = movie.getAttribute("title");
-            String year = movie.getAttribute("year");
+            String rated = movie.getAttribute("rated");
             String released = movie.getAttribute("released");
             String poster = movie.getAttribute("poster");
             
+            mv.setImdbID(id);
             mv.setTitle(title);
-            mv.setYear(year);
+            mv.setRated(rated);
             mv.setReleased(released);
             mv.setPoster(poster);
         }

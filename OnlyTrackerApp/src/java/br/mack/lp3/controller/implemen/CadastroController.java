@@ -39,7 +39,7 @@ public class CadastroController extends AbstractController {
             Logger.getLogger(CadastroController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if(password.equals(verify_password) && birthday != null) {
+        if(password.equals(verify_password) && birthday != null && name != null && email != null) {
             UserLP3 user = new UserLP3();
             user.setName(name);
             user.setEmail(email);
@@ -53,9 +53,11 @@ public class CadastroController extends AbstractController {
                 this.getRequest().getSession().setAttribute("user", userRead);
                 this.setReturnPage("index.jsp");
             } else {
-                this.setReturnPage("error.jsp");
+                this.getRequest().getSession().setAttribute("error", "Usuário já cadastrado.");
+                this.setReturnPage("login.jsp");
             }
         } else {
+            //this.getRequest()
             this.setReturnPage("error.jsp");
         }
         

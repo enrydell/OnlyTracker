@@ -20,7 +20,7 @@ public class BuscaController extends AbstractController {
     public void execute() {
         XMLParser xmlpr = new XMLParser();
         String mode = "xml";
-        xmlpr.openURL("http://www.omdbapi.com/?t="+this.getRequest().getParameter("q")+"&r="+mode);
+        xmlpr.openURL("http://www.omdbapi.com/?t="+this.getRequest().getParameter("q").replace(" ", "%20")+"&r="+mode);
         
         Element raiz = xmlpr.getDoc().getDocumentElement();
         Movie mv = xmlpr.parseMovie(raiz);

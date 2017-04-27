@@ -7,7 +7,9 @@ package br.mack.lp3.persistence.entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +24,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class UserLP3 implements Serializable {
     private String name, email, password;
+    private List<Movie> movies;
     @Temporal (TemporalType.TIMESTAMP)
     private Date birthday;
     @Id
@@ -37,6 +40,7 @@ public class UserLP3 implements Serializable {
         this.password = password;
         this.birthday = birthday;
         this.id_userlp3 = id_userlp3;
+        this.movies = new ArrayList<>();
     }
 
 
@@ -84,4 +88,13 @@ public class UserLP3 implements Serializable {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(this.birthday);
     }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+    
 }
