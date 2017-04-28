@@ -12,7 +12,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,26 +21,21 @@ import javax.servlet.http.HttpServletResponse;
  * @author 41514181
  */
 
-@WebServlet (urlPatterns = "/*")
+@WebFilter (urlPatterns = {"/user/*"})
 public class LoginFilter implements Filter {
-    HttpServletRequest request;
-    HttpServletResponse response;
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
-    
-    public void init(FilterConfig filterConfig, HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        this.request = request;
-        this.response = response;
-    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if(request.getAttribute("user") == null) {
-            
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        if(httpRequest.getSession().getAttribute("user") == null) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/index.jsp");
         } else {
-            
+            chain.doFilter(request, response);
         }
     }
 

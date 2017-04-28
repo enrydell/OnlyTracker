@@ -28,17 +28,15 @@ public class LoginController extends AbstractController{
         
         UserLP3 userExistente = userLP3DAO.readByEmail(email);
         if(userExistente == null){
-            this.getRequest().getSession().setAttribute("error", "Usuário não encontrado.");
-            this.setReturnPage("error.jsp");
-        }
-        else{
+            this.getRequest().getSession().setAttribute("error", "Email ou senha incorreta");
+            this.setReturnPage(this.getRequest().getContextPath() + "/index.jsp");
+        } else {
             if(password.equals(userExistente.getPassword())){
                 this.getRequest().getSession().setAttribute("user", userExistente);
-                this.setReturnPage("index.jsp");
-            }
-            else{
-                this.getRequest().getSession().setAttribute("error", "Email ou senha incorreta.");
-                this.setReturnPage("error.jsp");
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
+            } else {
+                this.getRequest().getSession().setAttribute("error", "Email ou senha incorreta");
+                this.setReturnPage(this.getRequest().getContextPath() + "/index.jsp");
             }
         }
     }

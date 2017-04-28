@@ -51,14 +51,14 @@ public class CadastroController extends AbstractController {
                 userLP3DAO.create(user);
                 UserLP3 userRead = userLP3DAO.readByEmail(email);
                 this.getRequest().getSession().setAttribute("user", userRead);
-                this.setReturnPage("index.jsp");
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
             } else {
-                this.getRequest().getSession().setAttribute("error", "Usuário já cadastrado.");
-                this.setReturnPage("login.jsp");
+                this.getRequest().getSession().setAttribute("error", "Usuário já cadastrado");
+                this.setReturnPage(this.getRequest().getContextPath() + "/index.jsp");
             }
         } else {
-            //this.getRequest()
-            this.setReturnPage("error.jsp");
+            this.getRequest().getSession().setAttribute("error", "Há campos em branco ou senhas não são iguais");
+            this.setReturnPage(this.getRequest().getContextPath() + "/index.jsp");
         }
         
     }

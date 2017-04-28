@@ -39,23 +39,31 @@ public class AtualizarController extends AbstractController {
             Logger.getLogger(CadastroController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if(password.equals(verify_password)) {
-            UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
-            user.setName(name);
-            user.setEmail(email);
-            user.setPassword(password);
-            user.setBirthday(birthday);
+        UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
+        if((!email.equals(user.getEmail()) && userLP3DAO.readByEmail(email) == null) || email.equals(user.getEmail())) {
+            if(password.equals(verify_password)) {
+                user.setName(name);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setBirthday(birthday);
 
-            userLP3DAO.update(user);
-            this.getRequest().getSession().setAttribute("user", user);            
+                userLP3DAO.update(user);
+                this.getRequest().getSession().setAttribute("user", user);
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
+            } else {
+                this.getRequest().getSession().setAttribute("error", "Senhas não são iguais");
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/profile.jsp");
+            }
+        } else {
+            this.getRequest().getSession().setAttribute("error", "Email já cadastrado");
+            this.setReturnPage(this.getRequest().getContextPath() + "/user/profile.jsp");
         }
-        this.setReturnPage("index.jsp");
     }
 
     private UserLP3DAO lookupUserLP3DAOBean() {
         try {
             Context c = new InitialContext();
-            return (UserLP3DAO) c.lookup("java:global/OnlyTracker/UserLP3DAO!br.mack.lp3.persistence.UserLP3DAO");
+            return (UserLP3DAO) c.lookup("java:global/OnlyTrackerApp/UserLP3DAO!br.mack.lp3.persistence.UserLP3DAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

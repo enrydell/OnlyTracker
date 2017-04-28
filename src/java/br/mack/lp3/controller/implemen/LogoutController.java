@@ -16,7 +16,7 @@ public class LogoutController extends AbstractController {
     @Override
     public void execute() {
         this.getRequest().getSession().invalidate();
-        this.setReturnPage("index.jsp");
+        this.setReturnPage(this.getRequest().getContextPath() + "/index.jsp");
     }
     
 }
