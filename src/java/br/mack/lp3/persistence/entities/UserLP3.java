@@ -11,14 +11,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,10 +30,8 @@ import javax.persistence.TemporalType;
 public class UserLP3 implements Serializable {
     private String name, email, password;
     
-    @ElementCollection
-    @CollectionTable(name="Series_e_filmes_dos_usuarios", joinColumns=@JoinColumn(name="id_userlp3"))
-    @Column(name="movie_id")
     @OneToMany
+    @JoinTable(name="Colecao", joinColumns=@JoinColumn(name="id_userlp3"), inverseJoinColumns=@JoinColumn(name="movie_id"))
     private Collection<Movie> movies;
     
     @Temporal (TemporalType.DATE)
