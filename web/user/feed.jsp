@@ -9,16 +9,16 @@
     </form>
     
     <c:choose>
-        <c:when test="${movie == null}">
-            <h1>${error.title}</h1>
+        <c:when test="${movie.title == 'Não encontrado!'}">
+            <h1>${movie.title}</h1>
         </c:when>
-        <c:otherwise>
+        <c:when test="${movie.title != 'Não encontrado!' && movie.getImdbID() != null}">
             <h1>${movie.title}</h1>
             <img src="${movie.poster}" alt="Imagem de ${movie.title}" />
             <span>Lançamento: ${movie.released}</span>
             <span>Classificação indicativa: ${movie.rated}</span>
             <span>Gênero, em inglês: ${movie.genre}</span>
-        </c:otherwise>
+        </c:when>
     </c:choose>
     
 <%@include file="../WEB-INF/jspf/footer.jspf" %>

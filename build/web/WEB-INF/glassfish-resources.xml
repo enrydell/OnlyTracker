@@ -11,4 +11,18 @@
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/db_onlytracker" object-type="user" pool-name="derby_net_db_onlytracker_mackPool"/>
+    <jdbc-connection-pool allow-non-component-callers="false" associate-with-thread="false" connection-creation-retry-attempts="0" connection-creation-retry-interval-in-seconds="10" connection-leak-reclaim="false" connection-leak-timeout-in-seconds="0" connection-validation-method="auto-commit" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" fail-all-connections="false" idle-timeout-in-seconds="300" is-connection-validation-required="false" is-isolation-level-guaranteed="true" lazy-connection-association="false" lazy-connection-enlistment="false" match-connections="false" max-connection-usage-count="0" max-pool-size="32" max-wait-time-in-millis="60000" name="mysql_heroku_cca8a341e76c01d_bf3268b1d6343bPool" non-transactional-connections="false" pool-resize-quantity="2" res-type="javax.sql.DataSource" statement-timeout-in-seconds="-1" steady-pool-size="8" validate-atmost-once-period-in-seconds="0" wrap-jdbc-objects="false">
+        <property name="serverName" value="us-cdbr-iron-east-03.cleardb.net"/>
+        <property name="databaseName" value="heroku_cca8a341e76c01d"/>
+        <property name="User" value="bf3268b1d6343b"/>
+        <property name="Password" value="33e1e70c"/>
+        <property name="URL" value="jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_cca8a341e76c01d?reconnect=true"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+    </jdbc-connection-pool>
+    <jdbc-resource enabled="true" jndi-name="java:app/heroku_db_onlytracker" object-type="user" pool-name="mysql_heroku_cca8a341e76c01d_bf3268b1d6343bPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_onlytracker" object-type="user" pool-name="derby_net_db_onlytracker_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_onlytracker" object-type="user" pool-name="derby_net_db_onlytracker_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_onlytracker" object-type="user" pool-name="derby_net_db_onlytracker_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_heroku_onlytracker" object-type="user" pool-name="mysql_heroku_cca8a341e76c01d_bf3268b1d6343bPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_onlytracker_heroku" object-type="user" pool-name="mysql_heroku_cca8a341e76c01d_bf3268b1d6343bPool"/>
 </resources>

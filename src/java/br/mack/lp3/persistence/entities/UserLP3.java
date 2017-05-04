@@ -8,15 +8,20 @@ package br.mack.lp3.persistence.entities;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  *
@@ -25,10 +30,16 @@ import javax.persistence.Transient;
 @Entity
 public class UserLP3 implements Serializable {
     private String name, email, password;
-    @Transient
-    private List<Movie> movies;
-    @Temporal (TemporalType.TIMESTAMP)
+    
+    @ElementCollection
+    @CollectionTable(name="Series_e_filmes_dos_usuarios", joinColumns=@JoinColumn(name="id_userlp3"))
+    @Column(name="movie_id")
+    @OneToMany
+    private Collection<Movie> movies;
+    
+    @Temporal (TemporalType.DATE)
     private Date birthday;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_userlp3;
@@ -91,7 +102,7 @@ public class UserLP3 implements Serializable {
         return formatter.format(this.birthday);
     }
 
-    public List<Movie> getMovies() {
+    public Collection<Movie> getMovies() {
         return movies;
     }
 

@@ -6,34 +6,51 @@
 package br.mack.lp3.persistence.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
  * @author 31538088
  */
+@Entity
 public class Movie implements Serializable {
 
     private String title;
+    @Transient
     private String year;
     private String rated;
-    private String released; 
-    private String runtime; 
-    private String genre; 
-    private String director; 
-    private String writer; 
-    private String actors; 
+    private String released;
+    private String runtime;
+    private String genre;
+    private String director;
+    private String writer;
+    private String actors;
     private String plot; 
+    @Transient
     private String language; 
+    @Transient
     private String country; 
-    private String awards; 
+    @Transient
+    private String awards;
+    @Transient
     private String poster; 
+    @Transient
     private int metascore;
+    @Transient
     private double imdbRating;
+    @Transient
     private double imdbVotes;
+    private String type;
     private String imdbID; 
-    private String type; 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long movie_id;
 
-    public Movie(String title, String year, String rated, String released, String runtime, String genre, String director, String writer, String actors, String plot, String language, String country, String awards, String poster, int metascore, double imdbRating, double imdbVotes, String imdbID, String type) {
+    public Movie(String title, String year, String rated, String released, String runtime, String genre, String director, String writer, String actors, String plot, String language, String country, String awards, String poster, int metascore, double imdbRating, double imdbVotes, String type, String imdbID, long movie_id) {
         this.title = title;
         this.year = year;
         this.rated = rated;
@@ -51,30 +68,12 @@ public class Movie implements Serializable {
         this.metascore = metascore;
         this.imdbRating = imdbRating;
         this.imdbVotes = imdbVotes;
-        this.imdbID = imdbID;
         this.type = type;
+        this.imdbID = imdbID;
+        this.movie_id = movie_id;
     }
 
     public Movie() {
-        this.title = "X";
-        this.year = "0";
-        this.rated = "X";
-        this.released = "X";
-        this.runtime = "X";
-        this.genre = "X";
-        this.director = "X";
-        this.writer = "X";
-        this.actors = "X";
-        this.plot = "X";
-        this.language = "X";
-        this.country = "X";
-        this.awards = "X";
-        this.poster = "X";
-        this.metascore = 0;
-        this.imdbRating = 0;
-        this.imdbVotes = 0;
-        this.imdbID = "X";
-        this.type = "X";
     }
 
     public String getTitle() {
@@ -153,6 +152,10 @@ public class Movie implements Serializable {
         return type;
     }
 
+    public long getMovie_id() {
+        return movie_id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -229,8 +232,13 @@ public class Movie implements Serializable {
         this.type = type;
     }
 
+    public void setMovie_id(long movie_id) {
+        this.movie_id = movie_id;
+    }
+
     @Override
     public String toString() {
-        return "Movie{" + "title=" + title + ", year=" + year + ", rated=" + rated + ", released=" + released + ", runtime=" + runtime + ", genre=" + genre + ", director=" + director + ", writer=" + writer + ", actors=" + actors + ", plot=" + plot + ", language=" + language + ", country=" + country + ", awards=" + awards + ", poster=" + poster + ", metascore=" + metascore + ", imdbRating=" + imdbRating + ", imdbVotes=" + imdbVotes + ", imdbID=" + imdbID + ", type=" + type + '}';
+        return "Movie{" + "title=" + title + ", year=" + year + ", rated=" + rated + ", released=" + released + ", runtime=" + runtime + ", genre=" + genre + ", director=" + director + ", writer=" + writer + ", actors=" + actors + ", plot=" + plot + ", language=" + language + ", country=" + country + ", awards=" + awards + ", poster=" + poster + ", metascore=" + metascore + ", imdbRating=" + imdbRating + ", imdbVotes=" + imdbVotes + ", type=" + type + ", imdbID=" + imdbID + ", movie_id=" + movie_id + '}';
     }
+
 }

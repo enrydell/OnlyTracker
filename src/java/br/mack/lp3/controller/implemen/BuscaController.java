@@ -30,12 +30,12 @@ public class BuscaController extends AbstractController {
         jsonpr.read(this.getRequest().getParameter("q"));
         Movie movie = jsonpr.parseJSON();
         
-        if(!movie.getTitle().equals("Não encontrado!")) {
+//        if(!movie.getTitle().equals("Não encontrado!")) {
             this.getRequest().getSession().setAttribute("movie", movie);
-        } else {
-            this.getRequest().getSession().setAttribute("movie", null);
-            this.getRequest().getSession().setAttribute("error", movie);
-        }
+//        } else {
+//            this.getRequest().getSession().setAttribute("movie", "Não encontrado!");
+//            this.getRequest().getSession().setAttribute("error", movie);
+//        }
         
         this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
     }

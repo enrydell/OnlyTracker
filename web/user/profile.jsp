@@ -17,6 +17,6 @@
             <p><input id="birthday" type="date" name="birthday" value="${user.birthdayToString()}" required /></p>
             <input type="hidden" name="ctrl" value="Atualizar" />
             <p><button type="submit">Enviar</button></p>
-            <p><a href="/OnlyTrackerApp/index.jsp">Voltar</a></p>
+            <p><a href="${pageContext.request.contextPath}/user/feed.jsp">Voltar</a></p>
         </form>
 <%@include file="../WEB-INF/jspf/footer.jspf" %>
