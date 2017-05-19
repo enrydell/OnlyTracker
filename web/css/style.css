@@ -8,3 +8,12 @@ and open the template in the editor.
     Author     : henrique
 */
 
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #fff;    
+}
+
+#index {
+    background-color: #f3f3f3;
+}

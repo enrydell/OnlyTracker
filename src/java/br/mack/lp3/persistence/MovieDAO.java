@@ -42,10 +42,10 @@ public class MovieDAO implements GenericDAO<Movie>{
         return (List<Movie>) query.getResultList();
     }
     
-    public Movie readByEmail(String email) {
-        Query query = em.createQuery("SELECT u FROM Movie u WHERE u.email=:n");
+    public Movie readByTitle(String title) {
+        Query query = em.createQuery("SELECT u FROM Movie u WHERE u.title=:n");
         try {
-            return (Movie) query.setParameter("n", email).getSingleResult();
+            return (Movie) query.setParameter("n", title).getSingleResult();
         } catch(NoResultException ex) {
             return null;
         }

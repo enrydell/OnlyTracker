@@ -79,7 +79,19 @@ public class JSONOMDbParser {
             String released = root.getJsonString("Released").getString().equals("N/A") ? "Não há informações" : root.getJsonString("Released").getString();
             String genre = root.getJsonString("Genre").getString().equals("N/A") ? "Não há informações" : root.getJsonString("Genre").getString();
             String poster = root.getJsonString("Poster").getString().equals("N/A") ? "Não há informações" : root.getJsonString("Poster").getString();
+            String actors = root.getJsonString("Actors").getString();
+            String director = root.getJsonString("Director").getString();
+            String plot = root.getJsonString("Plot").getString();
+            String runtime = root.getJsonString("Runtime").getString();
+            String type = root.getJsonString("Type").getString();
+            String writer = root.getJsonString("Writer").getString();
             
+            movie.setActors(actors);
+            movie.setDirector(director);
+            movie.setPlot(plot);
+            movie.setRuntime(runtime);
+            movie.setType(type);
+            movie.setWriter(writer);
             movie.setImdbID(id);
             movie.setTitle(name);
             switch(rated) {

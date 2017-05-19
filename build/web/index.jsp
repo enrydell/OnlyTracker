@@ -1,4 +1,5 @@
 <%@include file="WEB-INF/jspf/header.jspf" %>
+    <div id="index">
         <form action="${pageContext.request.contextPath}/FrontController" method="post">
             <h2>Cadastro</h2>
             <c:choose>
@@ -29,4 +30,5 @@
             <input type="hidden" name="ctrl" value="Login" />
             <p><button type="submit">Enviar</button></p>
         </form>
+    </div>
 <%@include file="WEB-INF/jspf/footer.jspf" %>
