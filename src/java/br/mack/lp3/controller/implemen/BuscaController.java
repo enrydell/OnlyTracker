@@ -28,15 +28,20 @@ public class BuscaController extends AbstractController {
         JSONOMDbParser jsonpr = new JSONOMDbParser();
         jsonpr.read(this.getRequest().getParameter("q"));
         Movie movie = jsonpr.parseJSON();
-        
-        Movie movieRead = movieDAO.readByTitle(movie.getTitle());
-        if(movieRead == null) {
-            movieDAO.create(movie);
-            this.getRequest().getSession().setAttribute("movie", movieRead);
-            this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
+        if(!movie.getTitle().equals("Não encontrado!")) {
+            Movie movieRead = movieDAO.readByTitle(movie.getTitle());
+            if(movieRead == null) {
+                movieDAO.create(movie);
+                movieRead = movieDAO.readByTitle(movie.getTitle());
+                this.getRequest().getSession().setAttribute("movie", movieRead);
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
+            } else {
+                movie.setMovie_id(movieRead.getMovie_id());
+                movieDAO.update(movie);
+                this.getRequest().getSession().setAttribute("movie", movie);
+                this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
+            }
         } else {
-            movie.setMovie_id(movieRead.getMovie_id());
-            movieDAO.update(movie);
             this.getRequest().getSession().setAttribute("movie", movie);
             this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
         }
