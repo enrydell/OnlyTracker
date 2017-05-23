@@ -26,7 +26,7 @@ public class BuscaController extends AbstractController {
     @Override
     public void execute() {
         JSONOMDbParser jsonpr = new JSONOMDbParser();
-        jsonpr.read(this.getRequest().getParameter("q"));
+        jsonpr.read(this.getRequest().getParameter("q"), this.getRequest().getParameter("c"));
         Movie movie = jsonpr.parseJSON();
         if(!movie.getTitle().equals("Não encontrado!")) {
             Movie movieRead = movieDAO.readByTitle(movie.getTitle());
