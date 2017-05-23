@@ -3,10 +3,10 @@
             <h2>Atualizar</h2>
             <c:choose>
                 <c:when test="${error == 'Senhas não são iguais'}">
-                    <span class="error">Senhas não são iguais</span>
+                    <div class="error"><span>Senhas não são iguais</span></div>
                 </c:when>
                 <c:when test="${error == 'Email já cadastrado'}">
-                    <span class="error">Email já cadastrado</span>
+                    <div class="error"><span>Email já cadastrado</span></div>
                 </c:when>
             </c:choose>
             <p><input type="text" name="nome" placeholder="Nome" value="${user.name}"/></p>
