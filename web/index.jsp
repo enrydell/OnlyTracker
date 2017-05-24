@@ -1,4 +1,20 @@
-<%@include file="WEB-INF/jspf/header.jspf" %>
+<%-- 
+    Document   : index
+    Created on : 09/03/2017, 09:27:53
+    Author     : 41514181
+--%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="mv" uri="WEB-INF/tlds/taglib.tld" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Only Tracker App</title>
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
         <div class="container">
             <div id="forms">
                 <div id="typeForm">
@@ -8,11 +24,11 @@
                 <form class="cadastroForm formActive" action="${pageContext.request.contextPath}/FrontController" method="post">
                     <h2>Cadastro</h2>
                     <c:choose>
-                        <c:when test="${error == 'Usu·rio j· cadastrado'}">
-                            <div class="error"><span>Usu·rio j· cadastrado</span></div>
+                        <c:when test="${error == 'Usu√°rio j√° cadastrado'}">
+                            <div class="error"><span>Usu√°rio j√° cadastrado</span></div>
                         </c:when>
-                        <c:when test="${error == 'H· campos em branco ou senhas n„o s„o iguais'}">
-                            <div class="error"><span>H· campos em branco ou senhas n„o s„o iguais</span></div>
+                        <c:when test="${error == 'H√° campos em branco ou senhas n√£o s√£o iguais'}">
+                            <div class="error"><span>H√° campos em branco ou senhas n√£o s√£o iguais</span></div>
                         </c:when>
                     </c:choose>
                     <p><input type="text" name="nome" placeholder="Nome" required /></p>
@@ -39,4 +55,7 @@
                 </form>
             </div>
         </div>
-<%@include file="WEB-INF/jspf/footer.jspf" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/script.js" type="text/javascript"></script>
+    </body>
+</html>

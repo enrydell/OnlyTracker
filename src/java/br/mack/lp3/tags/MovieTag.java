@@ -48,7 +48,7 @@ public class MovieTag extends SimpleTagSupport {
         String card = "<div class='movie'>"
                 + "<figure><img src='https://image.tmdb.org/t/p/w640"+poster+"'/></figure>"
                 + "<h2>"+title+"</h2>"
-                + "<span>"+released+"</span>"
+                + "<span>Lançamento: "+released+"</span>"
                 + "</div>";
         
         out.print(card);

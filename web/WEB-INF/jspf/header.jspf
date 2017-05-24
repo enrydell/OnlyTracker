@@ -15,3 +15,23 @@
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header>
+            <span class="menu">MENU</span>
+            <h2>${user.name}</h2>
+            <form action="${pageContext.request.contextPath}/FrontController" method="GET">
+                <select name="c">
+                    <option value="tv">Série</option>
+                    <option value="movie">Filme</option>
+                </select>
+                <p><input type="text" name="q" placeholder="Nome do filme/da série em inglês" /></p>
+                <input type="hidden" name="ctrl" value="Busca" />
+                <button type="submit">Buscar</button>
+            </form>
+        </header>
+        <nav class="menu">
+            <ul>
+                <li><a href="${pageContext.request.contextPath}/user/feed.jsp">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/profile.jsp">Cadastro</a></li>
+                <li><a href="${pageContext.request.contextPath}/FrontController?ctrl=Logout">Sair</a></li>
+            </ul>
+        </nav>
