@@ -11,16 +11,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -30,8 +27,8 @@ import javax.persistence.TemporalType;
 public class UserLP3 implements Serializable {
     private String name, email, password;
     
-    @OneToMany
-    @JoinTable(name="Colecao", joinColumns=@JoinColumn(name="id_userlp3"), inverseJoinColumns=@JoinColumn(name="movie_id"))
+//    @OneToMany(targetEntity = Movie.class)
+    @Transient
     private Collection<Movie> movies;
     
     @Temporal (TemporalType.DATE)
