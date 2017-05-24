@@ -36,7 +36,6 @@ public class Movie implements Serializable {
     private String country; 
     @Transient
     private String awards;
-    @Transient
     private String poster; 
     @Transient
     private int metascore;
