@@ -6,8 +6,7 @@
 package br.mack.lp3.persistence.entities;
 
 import java.io.Serializable;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,16 +23,16 @@ public class Colecao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_colecao;
     @OneToMany(targetEntity = UserLP3.class)
-    private long id_userlp3;
+    private List<UserLP3> userlp3;
     @OneToMany(targetEntity = Movie.class)
-    private long movie_id;
+    private List<Movie> movie_id;
 
     public Colecao() {
     }
 
-    public Colecao(long id_colecao, long id_userlp3, long movie_id) {
+    public Colecao(long id_colecao, List<UserLP3> userlp3, List<Movie> movie_id) {
         this.id_colecao = id_colecao;
-        this.id_userlp3 = id_userlp3;
+        this.userlp3 = userlp3;
         this.movie_id = movie_id;
     }
 
@@ -41,19 +40,19 @@ public class Colecao implements Serializable {
         return id_colecao;
     }
 
-    public long getId_userlp3() {
-        return id_userlp3;
+    public List<UserLP3> getUserlp3() {
+        return userlp3;
     }
 
-    public void setId_userlp3(long id_userlp3) {
-        this.id_userlp3 = id_userlp3;
+    public void setUserlp3(List<UserLP3> userlp3) {
+        this.userlp3 = userlp3;
     }
 
-    public long getMovie_id() {
+    public List<Movie> getMovie_id() {
         return movie_id;
     }
 
-    public void setMovie_id(long movie_id) {
+    public void setMovie_id(List<Movie> movie_id) {
         this.movie_id = movie_id;
     }
     
