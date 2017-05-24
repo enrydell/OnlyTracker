@@ -15,6 +15,7 @@ import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 /**
@@ -25,7 +26,7 @@ import javax.persistence.Query;
 @Stateful
 public class ColecaoDAO implements GenericDAO<Movie> {
     
-    @PersistenceContext(unitName = "OnlyTrackerPU"/*, type = PersistenceContextType.EXTENDED*/)
+    @PersistenceContext(unitName = "OnlyTrackerPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
 
     @Override
@@ -38,9 +39,7 @@ public class ColecaoDAO implements GenericDAO<Movie> {
 //        query.setParameter("i", id_userlp3);
 //        query.setParameter("m", movie_id);
 //        query.executeUpdate();
-          em.getTransaction().begin();
           user.getMovies().add(movie);
-          em.getTransaction().commit();
           return user;
     }
 
