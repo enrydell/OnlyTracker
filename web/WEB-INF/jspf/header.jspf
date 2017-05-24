@@ -32,6 +32,7 @@
             <ul>
                 <li><a href="${pageContext.request.contextPath}/user/feed.jsp">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/profile.jsp">Cadastro</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/colecao.jsp">Colecao</a></li>
                 <li><a href="${pageContext.request.contextPath}/FrontController?ctrl=Logout">Sair</a></li>
             </ul>
         </nav>
