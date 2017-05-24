@@ -89,7 +89,7 @@ public class JSONOMDbParser {
 //            String actors = root.getJsonString("Actors").getString();
 //            String director = root.getJsonString("Director").getString();
 //            String plot = root.getJsonString("Plot").getString();
-            String plot = root.getJsonString("overview").getString();
+            String plot = root.getJsonString("overview").getString().length() > 255 ? root.getJsonString("overview").getString().substring(0, 255) : root.getJsonString("overview").getString();
 //            String runtime = root.getJsonString("Runtime").getString();
 //            String type = root.getJsonString("Type").getString();
 //            String writer = root.getJsonString("Writer").getString();
