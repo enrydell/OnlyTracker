@@ -6,6 +6,7 @@
 package br.mack.lp3.persistence;
 
 import br.mack.lp3.persistence.entities.Movie;
+import br.mack.lp3.persistence.entities.UserLP3;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,8 +14,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 /**
@@ -25,7 +24,7 @@ import javax.persistence.Query;
 @Stateful
 public class ColecaoDAO implements GenericDAO<Movie> {
     
-    @PersistenceContext(unitName = "OnlyTrackerPU", type = PersistenceContextType.EXTENDED)
+//    @PersistenceContext(unitName = "OnlyTrackerPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
 
     @Override
@@ -33,11 +32,15 @@ public class ColecaoDAO implements GenericDAO<Movie> {
         em.persist(e);
     }
     
-    public void create(long movie_id, long id_userlp3) {
-        Query query = em.createQuery("INSERT INTO Colecao(id_userlp3,movie_id) VALUES(:i,:m)");
-        query.setParameter("i", id_userlp3);
-        query.setParameter("m", movie_id);
-        query.executeUpdate();
+    public UserLP3 create(Movie movie, UserLP3 user) {
+//        Query query = em.createQuery("UPDATE MACK.COLECAO SET id_userlp3=:i,movie_id=:m");
+//        query.setParameter("i", id_userlp3);
+//        query.setParameter("m", movie_id);
+//        query.executeUpdate();
+          em.getTransaction().begin();
+          user.getMovies().add(movie);
+          em.getTransaction().commit();
+          return user;
     }
 
     @Override
