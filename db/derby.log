@@ -1,7 +1,7 @@
-Wed May 24 17:20:30 BRT 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Wed May 24 19:58:04 BRT 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Wed May 24 17:20:31 BRT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015c-3c1e-30f3-00001d11e5ed 
+Wed May 24 19:58:51 BRT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015c-3cae-70c3-00001d11e5ed 
 on database directory /home/enrydell/Documents/Dev/Git/OnlyTrackerApp/db/db_onlytracker with class loader sun.misc.Launcher$AppClassLoader@2f0e140b 
 Loaded from file:/home/enrydell/Java/GlassFish_Server/javadb/lib/derby.jar
 java.vendor=Oracle Corporation

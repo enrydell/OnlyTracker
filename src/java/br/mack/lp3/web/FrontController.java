@@ -7,7 +7,9 @@ package br.mack.lp3.web;
 
 import br.mack.lp3.controller.Controller;
 import br.mack.lp3.controller.ControllerFactory;
+import br.mack.lp3.persistence.entities.UserLP3;
 import java.io.IOException;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,16 +22,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
+    @EJB
+    private br.mack.lp3.jms.JMSProducerLocal jMSProducer;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String controllerName = request.getParameter("ctrl");
@@ -41,6 +37,7 @@ public class FrontController extends HttpServlet {
             controller.init(request, response);
             controller.execute();
             page = controller.getReturnPage();
+            jMSProducer.sendMessage(((UserLP3) request.getSession().getAttribute("user")).getEmail());
         }
         
         response.sendRedirect(page);

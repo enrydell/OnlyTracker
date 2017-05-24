@@ -72,10 +72,10 @@ public class JSONOMDbParser {
         
         JsonReader reader = Json.createReader(new StringReader(content));
         JsonObject rootFirst = reader.readObject();
-        JsonObject root = (JsonObject) rootFirst.getJsonArray("results").get(0);
+        JsonObject root = rootFirst.getJsonArray("results").get(0) != null ? (JsonObject) rootFirst.getJsonArray("results").get(0) : null;
         
         /*root.getJsonString("Response").getString().equals("True")*/
-        if(root.getJsonNumber("status_code") == null) {
+        if(root.getJsonNumber("status_code") == null && root != null) {
 //            String id = root.getJsonString("imdbID").getString();
             String id = root.getJsonNumber("id").toString();
 //            String name = root.getJsonString("Title").getString();
