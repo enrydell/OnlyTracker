@@ -33,11 +33,12 @@ public class CollectionAddController extends AbstractController {
     @Override
     public void execute() {
         
-//        UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
-//        Movie movie = (Movie) this.getRequest().getSession().getAttribute("movie");
-////        user.getMovies().add(movie);
+        UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
+        Movie movie = (Movie) this.getRequest().getSession().getAttribute("movie");
+        user.getMovies().add(movie);
+        userLP3DAO.update(user);
 //        UserLP3 userAlterado = colecaoDAO.create(movie, user);
-//        this.getRequest().getSession().setAttribute("user", userAlterado);
+        this.getRequest().getSession().setAttribute("user", user);
         this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
     }
 
