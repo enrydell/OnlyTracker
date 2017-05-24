@@ -32,7 +32,7 @@ public class CollectionAddController extends AbstractController {
         
         UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
         Movie movie = (Movie) this.getRequest().getSession().getAttribute("movie");
-        user.getMovies().add(movie);
+//        user.getMovies().add(movie);
         UserLP3 userAlterado = colecaoDAO.create(movie, user);
         this.getRequest().getSession().setAttribute("user", userAlterado);
         this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");

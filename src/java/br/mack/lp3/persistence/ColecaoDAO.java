@@ -14,6 +14,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
@@ -24,7 +25,7 @@ import javax.persistence.Query;
 @Stateful
 public class ColecaoDAO implements GenericDAO<Movie> {
     
-//    @PersistenceContext(unitName = "OnlyTrackerPU", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "OnlyTrackerPU"/*, type = PersistenceContextType.EXTENDED*/)
     private EntityManager em;
 
     @Override
