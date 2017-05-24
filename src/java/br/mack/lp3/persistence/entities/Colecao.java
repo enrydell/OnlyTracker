@@ -6,10 +6,13 @@
 package br.mack.lp3.persistence.entities;
 
 import java.io.Serializable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,7 +23,9 @@ public class Colecao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_colecao;
+    @OneToMany(targetEntity = UserLP3.class)
     private long id_userlp3;
+    @OneToMany(targetEntity = Movie.class)
     private long movie_id;
 
     public Colecao() {
