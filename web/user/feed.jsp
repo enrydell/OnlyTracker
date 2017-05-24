@@ -6,6 +6,7 @@
             </c:when>
             <c:when test="${movie.title != 'Não encontrado!' && movie.getImdbID() != null}">
                 <mv:MovieTag poster="${movie.poster}" released="${movie.released}" title="${movie.title}" />
+                <a href="${pageContext.request.contextPath}/FrontController?ctrl=CollectionAdd&movie_id=${movie.movie_id}">Add</a>
             </c:when>
         </c:choose>
     </div>

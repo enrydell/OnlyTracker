@@ -23,47 +23,52 @@ import javax.persistence.Query;
  */
 @LocalBean
 @Stateful
-public class ColecaoDAO implements GenericDAO<Collection<Movie>> {
+public class ColecaoDAO implements GenericDAO<Movie> {
     
     @PersistenceContext(unitName = "OnlyTrackerPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
 
     @Override
-    public void create(Collection<Movie> e) {
-        for(Movie movie : e){
-            em.persist(movie.getMovie_id());            
-        }
+    public void create(Movie e) {
+        em.persist(e);
+    }
+    
+    public void create(long movie_id, long id_userlp3) {
+        Query query = em.createQuery("INSERT INTO Colecao(id_userlp3,movie_id) VALUES(:i,:m)");
+        query.setParameter("i", id_userlp3);
+        query.setParameter("m", movie_id);
+        query.executeUpdate();
     }
 
     @Override
-    public Collection<Movie> readById(long id) {
+    public Movie readById(long id) {
         return null;
         //return em.find(Collection<Movie>.class, id);
     }
 
     @Override
-    public List<Collection<Movie>> readAll() {
-        Query query = em.createQuery("SELECT u FROM Collection<Movie> u");
-        return (List<Collection<Movie>>) query.getResultList();
+    public List<Movie> readAll() {
+        Query query = em.createQuery("SELECT u FROM Colecao u");
+        return (List<Movie>) query.getResultList();
     }
 
     @Override
-    public void update(Collection<Movie> e) {
-        for(Movie movie : e){
-            em.merge(movie.getMovie_id());            
-        }
+    public void update(Movie e) {
+//        for(Movie movie : e){
+//            em.merge(movie.getMovie_id());            
+//        }
     }
 
     @Override
-    public void remove(Collection<Movie> e) {
-         for(Movie movie : e){
-            em.remove(em.merge((movie.getMovie_id())));            
-        }
+    public void remove(Movie e) {
+//         for(Movie movie : e){
+//            em.remove(em.merge((movie.getMovie_id())));            
+//        }
     }
     
     public Collection<Movie> getMoviesForUser(long id_userlp3){
         //MovieDAO moviedao = new MovieDAO();
-        Query query = em.createQuery("SELECT movie_id from Collection<Movie> c where c.id_userlp3=:n");
+        Query query = em.createQuery("SELECT movie_id FROM Colecao c WHERE c.id_userlp3=:n");
         try{
             query.setParameter("n", id_userlp3);
             Collection<Movie> lista = new ArrayList<>();

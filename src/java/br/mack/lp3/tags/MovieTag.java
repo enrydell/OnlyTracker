@@ -49,6 +49,7 @@ public class MovieTag extends SimpleTagSupport {
                 + "<figure><img src='https://image.tmdb.org/t/p/w640"+poster+"'/></figure>"
                 + "<h2>"+title+"</h2>"
                 + "<span>Lançamento: "+released+"</span>"
+//                + "<a href='"+out.+"'>Add</a>"
                 + "</div>";
         
         out.print(card);
