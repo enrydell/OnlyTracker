@@ -15,9 +15,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  *
@@ -27,8 +27,7 @@ import javax.persistence.Transient;
 public class UserLP3 implements Serializable {
     private String name, email, password;
     
-//    @OneToMany(targetEntity = Movie.class)
-    @Transient
+    @OneToMany(targetEntity = Movie.class)
     private Collection<Movie> movies;
     
     @Temporal (TemporalType.DATE)
