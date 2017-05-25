@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=4.9.0-deepin5-amd64
 derby.system.home=/home/enrydell/Documents/Dev/Git/OnlyTrackerApp/db
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed May 24 22:22:44 BRT 2017: Shutting down Derby engine
+----------------------------------------------------------------
+Wed May 24 22:22:44 BRT 2017:
+Shutting down instance a816c00e-015c-3d1e-38c6-00001d11e5ed on database directory /home/enrydell/Documents/Dev/Git/OnlyTrackerApp/db/db_onlytracker with class loader sun.misc.Launcher$AppClassLoader@2f0e140b 
+----------------------------------------------------------------
