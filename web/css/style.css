@@ -15,6 +15,7 @@ and open the template in the editor.
 
 body {
   background-color: #f3f3f3;
+  overflow-x: hidden;
 }
 
 .container {
@@ -125,6 +126,7 @@ header {
     overflow: hidden;
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -135,6 +137,10 @@ header > * {
 
 .menuButton {
     margin-top: 17px;
+    cursor: pointer;
+}
+
+.menuClose {
     cursor: pointer;
 }
 
@@ -212,10 +218,11 @@ header form button {
 
 .menu {
     position: fixed;
-    left: 0;
+    left: -150px;
     background-color: rgb(70, 70, 70);
     height: 100%;
     width: 150px;
+    box-shadow: 0px 0px 10px #2b2b2b;
 }
 
 .menu ul {

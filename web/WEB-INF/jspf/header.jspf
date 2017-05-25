@@ -30,7 +30,7 @@
         </header>
         <nav class="menu">
             <ul>
-                <li><span>Fechar</span></li>
+                <li><span class="menuClose">Fechar</span></li>
                 <li><a href="${pageContext.request.contextPath}/user/feed.jsp">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/profile.jsp">Cadastro</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/colecao.jsp">Colecao</a></li>

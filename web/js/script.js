@@ -20,3 +20,15 @@ $('#typeForm span').each(function() {
         }
     });
 });
+
+$('.menuButton').click(function() {
+    $(this).parent('header').siblings('.container').animate({left: "150px"});
+    $(this).parent('header').animate({left: "150px"});
+    $(this).parent('header').siblings('.menu').animate({left: "0px"}); 
+});
+
+$('.menuClose').click(function() {
+	$(this).parent().parent().parent('.menu').animate({left: "-150px"});
+    $(this).parent().parent().parent('.menu').siblings('header').animate({left: "0px"});
+    $(this).parent().parent().parent('.menu').siblings('.container').animate({left: "0px"}); 
+});
