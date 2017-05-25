@@ -16,7 +16,7 @@
     </head>
     <body>
         <header>
-            <span class="menu">MENU</span>
+            <span class="menuButton">MENU</span>
             <h2>${user.name}</h2>
             <form action="${pageContext.request.contextPath}/FrontController" method="GET">
                 <select name="c">
@@ -30,6 +30,7 @@
         </header>
         <nav class="menu">
             <ul>
+                <li><span>Fechar</span></li>
                 <li><a href="${pageContext.request.contextPath}/user/feed.jsp">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/profile.jsp">Cadastro</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/colecao.jsp">Colecao</a></li>

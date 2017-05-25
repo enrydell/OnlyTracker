@@ -45,7 +45,7 @@ public class MovieTag extends SimpleTagSupport {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        String card = "<div class='movie'>"
+        String card = "<div>"
                 + "<figure><img src='https://image.tmdb.org/t/p/w640"+poster+"'/></figure>"
                 + "<h2>"+title+"</h2>"
                 + "<span>Lançamento: "+released+"</span>"

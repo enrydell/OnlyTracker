@@ -7,7 +7,6 @@ package br.mack.lp3.web;
 
 import br.mack.lp3.controller.Controller;
 import br.mack.lp3.controller.ControllerFactory;
-import br.mack.lp3.persistence.entities.UserLP3;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
     
-    @EJB
-    private br.mack.lp3.jms.JMSProducerLocal jMSProducer;
+//    @EJB
+//    private br.mack.lp3.jms.JMSProducerLocal jMSProducer;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,7 +36,7 @@ public class FrontController extends HttpServlet {
             controller.init(request, response);
             controller.execute();
             page = controller.getReturnPage();
-            jMSProducer.sendMessage(((UserLP3) request.getSession().getAttribute("user")).getEmail());
+//            jMSProducer.sendMessage(((UserLP3) request.getSession().getAttribute("user")).getEmail());
         }
         
         response.sendRedirect(page);
