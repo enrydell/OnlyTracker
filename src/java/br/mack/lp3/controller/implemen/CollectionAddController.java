@@ -9,6 +9,7 @@ import br.mack.lp3.controller.AbstractController;
 import br.mack.lp3.persistence.UserLP3DAO;
 import br.mack.lp3.persistence.entities.Movie;
 import br.mack.lp3.persistence.entities.UserLP3;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -28,9 +29,18 @@ public class CollectionAddController extends AbstractController {
         
         UserLP3 user = (UserLP3) this.getRequest().getSession().getAttribute("user");
         Movie movie = (Movie) this.getRequest().getSession().getAttribute("movie");
-        user.getMovies().add(movie);
-        userLP3DAO.update(user);
-        this.getRequest().getSession().setAttribute("user", user);
+        Collection<Movie> movies = user.getMovies();
+        boolean doUpdate = true;
+        for(Movie m : movies) {
+            if(m.getMovie_id() == movie.getMovie_id()) {
+                doUpdate = false;
+            }
+        }
+        if(doUpdate) {
+            user.getMovies().add(movie);
+            userLP3DAO.update(user);
+            this.getRequest().getSession().setAttribute("user", user);
+        }
         this.setReturnPage(this.getRequest().getContextPath() + "/user/feed.jsp");
     }
 
